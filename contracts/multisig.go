@@ -14,10 +14,10 @@ import (
 )
 
 // MultisigWalletABI is the input ABI used to generate the binding from.
-const MultisigWalletABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"threshold\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"ownersArr\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"nonce\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"sigV\",\"type\":\"uint8[]\"},{\"name\":\"sigR\",\"type\":\"bytes32[]\"},{\"name\":\"sigS\",\"type\":\"bytes32[]\"},{\"name\":\"destination\",\"type\":\"address\"},{\"name\":\"value\",\"type\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"execute\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"owners_\",\"type\":\"address[]\"},{\"name\":\"threshold_\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"}]"
+const MultisigWalletABI = "[{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"owners\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"threshold\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"signature1\",\"type\":\"bytes\"},{\"name\":\"signature2\",\"type\":\"bytes\"},{\"name\":\"destination\",\"type\":\"address\"},{\"name\":\"value\",\"type\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"execute\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"nonce\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"owners_\",\"type\":\"address[]\"},{\"name\":\"threshold_\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"}]"
 
 // MultisigWalletBin is the compiled bytecode used for deploying new contracts.
-const MultisigWalletBin = `0x608060405234801561001057600080fd5b5060405161062c38038061062c833981016040528051602082015191018051909190600090600a10801590610046575082518211155b8015610053575060008210155b151561005e57600080fd5b5060005b82518110156100b957600160026000858481518110151561007f57fe5b602090810291909101810151600160a060020a03168252810191909152604001600020805460ff1916911515919091179055600101610062565b82516100cc9060039060208601906100d7565b505060015550610163565b82805482825590600052602060002090810192821561012c579160200282015b8281111561012c5782518254600160a060020a031916600160a060020a039091161782556020909201916001909101906100f7565b5061013892915061013c565b5090565b61016091905b80821115610138578054600160a060020a0319168155600101610142565b90565b6104ba806101726000396000f3006080604052600436106100615763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166342cde4e88114610063578063aa5df9e21461008a578063affed0e0146100cb578063f12d394f146100e0575b005b34801561006f57600080fd5b50610078610208565b60408051918252519081900360200190f35b34801561009657600080fd5b506100a260043561020e565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b3480156100d757600080fd5b50610078610243565b3480156100ec57600080fd5b506040805160206004803580820135838102808601850190965280855261006195369593946024949385019291829185019084908082843750506040805187358901803560208181028481018201909552818452989b9a998901989297509082019550935083925085019084908082843750506040805187358901803560208181028481018201909552818452989b9a99890198929750908201955093508392508501908490808284375050604080516020888301358a018035601f8101839004830284018301909452838352979a893573ffffffffffffffffffffffffffffffffffffffff169a8a8301359a919990985060609091019650919450908101925081908401838280828437509497506102499650505050505050565b60015481565b600380548290811061021c57fe5b60009182526020909120015473ffffffffffffffffffffffffffffffffffffffff16905081565b60005481565b600080600080600154895114151561026057600080fd5b87518951148015610272575089518951145b151561027d57600080fd5b600080546040517f190000000000000000000000000000000000000000000000000000000000000080825260018201849052306c01000000000000000000000000818102600285015273ffffffffffffffffffffffffffffffffffffffff8d16026016840152602a83018b9052895191949390928c928c928c929091604a82019060208501908083835b602083106103265780518252601f199092019160209182019101610307565b51815160209384036101000a600019018019909216911617905292019384525060405192839003019091209a5060009950505050505050505b60015483101561045a576001848b8581518110151561037a57fe5b906020019060200201518b8681518110151561039257fe5b906020019060200201518b878151811015156103aa57fe5b60209081029091018101516040805160008082528185018084529790975260ff9095168582015260608501939093526080840152905160a0808401949293601f19830193908390039091019190865af115801561040b573d6000803e3d6000fd5b505060408051601f19015173ffffffffffffffffffffffffffffffffffffffff811660009081526002602052919091205490935060ff161515905061044f57600080fd5b60019092019161035f565b60009050600080865160208801898b5af1905080151561047957600080fd5b505060008054600101905550505050505050505600a165627a7a723058200d81fa39989c7aaa56bb19bfd15dd5ddeb10f806072119fb1093cbb273fde0a60029`
+const MultisigWalletBin = `0x608060405234801561001057600080fd5b506040516105cc3803806105cc83398101604052805160208201519101805190919060009060021061004157600080fd5b600a835111158015610054575082518211155b80156100605750600082115b151561006b57600080fd5b5060005b82518110156100c657600160026000858481518110151561008c57fe5b602090810291909101810151600160a060020a03168252810191909152604001600020805460ff191691151591909117905560010161006f565b82516100d99060039060208601906100e4565b505060015550610170565b828054828255906000526020600020908101928215610139579160200282015b828111156101395782518254600160a060020a031916600160a060020a03909116178255602090920191600190910190610104565b50610145929150610149565b5090565b61016d91905b80821115610145578054600160a060020a031916815560010161014f565b90565b61044d8061017f6000396000f3006080604052600436106100615763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663025e7c27811461006357806342cde4e814610097578063aab327e8146100be578063affed0e0146101a9575b005b34801561006f57600080fd5b5061007b6004356101be565b60408051600160a060020a039092168252519081900360200190f35b3480156100a357600080fd5b506100ac6101e6565b60408051918252519081900360200190f35b3480156100ca57600080fd5b506040805160206004803580820135601f810184900484028501840190955284845261006194369492936024939284019190819084018382808284375050604080516020601f89358b018035918201839004830284018301909452808352979a99988101979196509182019450925082915084018382808284375050604080516020888301358a018035601f8101839004830284018301909452838352979a8935600160a060020a03169a8a8301359a919990985060609091019650919450908101925081908401838280828437509497506101ec9650505050505050565b3480156101b557600080fd5b506100ac610335565b60038054829081106101cc57fe5b600091825260209091200154600160a060020a0316905081565b60015481565b6000808484846000546040518085600160a060020a0316600160a060020a03166c0100000000000000000000000002815260140184815260200183805190602001908083835b602083106102515780518252601f199092019160209182019101610232565b51815160209384036101000a60001901801990921691161790529201938452506040519283900301909120955061029193508892508591508a905061033b565b905061029e85838861033b565b905084600160a060020a0316848460405180828051906020019080838360005b838110156102d65781810151838201526020016102be565b50505050905090810190601f1680156103035780820380516001836020036101000a031916815260200191505b5091505060006040518083038185875af192505050151561032357600080fd5b50506000805460010190555050505050565b60005481565b600080610348848461037a565b600160a060020a03811660009081526002602052604090205490915060ff16151561037257600080fd5b949350505050565b6000806000808451604114151561039057600080fd5b50505060208201516040830151604184015160ff16601b8110156103b257601b015b60408051600080825260208083018085528a905260ff8516838501526060830187905260808301869052925160019360a0808501949193601f19840193928390039091019190865af115801561040c573d6000803e3d6000fd5b5050604051601f1901519796505050505050505600a165627a7a7230582049b8caf97e3a520aee4f4344d88ea161fb6798a8baaeb3d594a924b02d2317fd0029`
 
 // DeployMultisigWallet deploys a new Ethereum contract, binding an instance of MultisigWallet to it.
 func DeployMultisigWallet(auth *bind.TransactOpts, backend bind.ContractBackend, owners_ []common.Address, threshold_ *big.Int) (common.Address, *types.Transaction, *MultisigWallet, error) {
@@ -200,30 +200,30 @@ func (_MultisigWallet *MultisigWalletCallerSession) Nonce() (*big.Int, error) {
 	return _MultisigWallet.Contract.Nonce(&_MultisigWallet.CallOpts)
 }
 
-// OwnersArr is a free data retrieval call binding the contract method 0xaa5df9e2.
+// Owners is a free data retrieval call binding the contract method 0x025e7c27.
 //
-// Solidity: function ownersArr( uint256) constant returns(address)
-func (_MultisigWallet *MultisigWalletCaller) OwnersArr(opts *bind.CallOpts, arg0 *big.Int) (common.Address, error) {
+// Solidity: function owners( uint256) constant returns(address)
+func (_MultisigWallet *MultisigWalletCaller) Owners(opts *bind.CallOpts, arg0 *big.Int) (common.Address, error) {
 	var (
 		ret0 = new(common.Address)
 	)
 	out := ret0
-	err := _MultisigWallet.contract.Call(opts, out, "ownersArr", arg0)
+	err := _MultisigWallet.contract.Call(opts, out, "owners", arg0)
 	return *ret0, err
 }
 
-// OwnersArr is a free data retrieval call binding the contract method 0xaa5df9e2.
+// Owners is a free data retrieval call binding the contract method 0x025e7c27.
 //
-// Solidity: function ownersArr( uint256) constant returns(address)
-func (_MultisigWallet *MultisigWalletSession) OwnersArr(arg0 *big.Int) (common.Address, error) {
-	return _MultisigWallet.Contract.OwnersArr(&_MultisigWallet.CallOpts, arg0)
+// Solidity: function owners( uint256) constant returns(address)
+func (_MultisigWallet *MultisigWalletSession) Owners(arg0 *big.Int) (common.Address, error) {
+	return _MultisigWallet.Contract.Owners(&_MultisigWallet.CallOpts, arg0)
 }
 
-// OwnersArr is a free data retrieval call binding the contract method 0xaa5df9e2.
+// Owners is a free data retrieval call binding the contract method 0x025e7c27.
 //
-// Solidity: function ownersArr( uint256) constant returns(address)
-func (_MultisigWallet *MultisigWalletCallerSession) OwnersArr(arg0 *big.Int) (common.Address, error) {
-	return _MultisigWallet.Contract.OwnersArr(&_MultisigWallet.CallOpts, arg0)
+// Solidity: function owners( uint256) constant returns(address)
+func (_MultisigWallet *MultisigWalletCallerSession) Owners(arg0 *big.Int) (common.Address, error) {
+	return _MultisigWallet.Contract.Owners(&_MultisigWallet.CallOpts, arg0)
 }
 
 // Threshold is a free data retrieval call binding the contract method 0x42cde4e8.
@@ -252,23 +252,23 @@ func (_MultisigWallet *MultisigWalletCallerSession) Threshold() (*big.Int, error
 	return _MultisigWallet.Contract.Threshold(&_MultisigWallet.CallOpts)
 }
 
-// Execute is a paid mutator transaction binding the contract method 0xf12d394f.
+// Execute is a paid mutator transaction binding the contract method 0xaab327e8.
 //
-// Solidity: function execute(sigV uint8[], sigR bytes32[], sigS bytes32[], destination address, value uint256, data bytes) returns()
-func (_MultisigWallet *MultisigWalletTransactor) Execute(opts *bind.TransactOpts, sigV []uint8, sigR [][32]byte, sigS [][32]byte, destination common.Address, value *big.Int, data []byte) (*types.Transaction, error) {
-	return _MultisigWallet.contract.Transact(opts, "execute", sigV, sigR, sigS, destination, value, data)
+// Solidity: function execute(signature1 bytes, signature2 bytes, destination address, value uint256, data bytes) returns()
+func (_MultisigWallet *MultisigWalletTransactor) Execute(opts *bind.TransactOpts, signature1 []byte, signature2 []byte, destination common.Address, value *big.Int, data []byte) (*types.Transaction, error) {
+	return _MultisigWallet.contract.Transact(opts, "execute", signature1, signature2, destination, value, data)
 }
 
-// Execute is a paid mutator transaction binding the contract method 0xf12d394f.
+// Execute is a paid mutator transaction binding the contract method 0xaab327e8.
 //
-// Solidity: function execute(sigV uint8[], sigR bytes32[], sigS bytes32[], destination address, value uint256, data bytes) returns()
-func (_MultisigWallet *MultisigWalletSession) Execute(sigV []uint8, sigR [][32]byte, sigS [][32]byte, destination common.Address, value *big.Int, data []byte) (*types.Transaction, error) {
-	return _MultisigWallet.Contract.Execute(&_MultisigWallet.TransactOpts, sigV, sigR, sigS, destination, value, data)
+// Solidity: function execute(signature1 bytes, signature2 bytes, destination address, value uint256, data bytes) returns()
+func (_MultisigWallet *MultisigWalletSession) Execute(signature1 []byte, signature2 []byte, destination common.Address, value *big.Int, data []byte) (*types.Transaction, error) {
+	return _MultisigWallet.Contract.Execute(&_MultisigWallet.TransactOpts, signature1, signature2, destination, value, data)
 }
 
-// Execute is a paid mutator transaction binding the contract method 0xf12d394f.
+// Execute is a paid mutator transaction binding the contract method 0xaab327e8.
 //
-// Solidity: function execute(sigV uint8[], sigR bytes32[], sigS bytes32[], destination address, value uint256, data bytes) returns()
-func (_MultisigWallet *MultisigWalletTransactorSession) Execute(sigV []uint8, sigR [][32]byte, sigS [][32]byte, destination common.Address, value *big.Int, data []byte) (*types.Transaction, error) {
-	return _MultisigWallet.Contract.Execute(&_MultisigWallet.TransactOpts, sigV, sigR, sigS, destination, value, data)
+// Solidity: function execute(signature1 bytes, signature2 bytes, destination address, value uint256, data bytes) returns()
+func (_MultisigWallet *MultisigWalletTransactorSession) Execute(signature1 []byte, signature2 []byte, destination common.Address, value *big.Int, data []byte) (*types.Transaction, error) {
+	return _MultisigWallet.Contract.Execute(&_MultisigWallet.TransactOpts, signature1, signature2, destination, value, data)
 }
