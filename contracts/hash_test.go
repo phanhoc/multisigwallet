@@ -9,6 +9,8 @@ import (
 	"math/big"
 	"testing"
 
+	"bytes"
+	"crypto/ecdsa"
 	"github.com/miguelmota/go-solidity-sha3"
 )
 
@@ -31,10 +33,35 @@ func TestNewHash(t *testing.T) {
 	hash := solsha3.SoliditySHA3(
 		solsha3.Address("0x0dCE90d5E4C5dB60c9a9c788CDe1e9468B8Ac99B"),
 		solsha3.Uint256(big.NewInt(100000000000000000)),
-		solsha3.String(nil),
-		solsha3.Uint256(big.NewInt(0)),
+		// solsha3.String(nil),
+		// solsha3.Uint256(big.NewInt(0)),
 	)
 	fmt.Println("0x" + common.Bytes2Hex(hash))
+	accKey_1, err := crypto.HexToECDSA("36b791066cdb3add0b6cbbf3ebc11f821a870f5360bb8aa54472be92ff5d5ff9")
+	if err != nil {
+		log.Fatal(err)
+	}
+	publicKey := accKey_1.Public()
+	publicKeyECDSA, ok := publicKey.(*ecdsa.PublicKey)
+	if !ok {
+		log.Fatal("error casting public key to ECDSA")
+	}
+	publicKeyBytes := crypto.FromECDSAPub(publicKeyECDSA)
+
+	signTx_1, err := crypto.Sign(hash, accKey_1)
+	if err != nil {
+		log.Fatal(err)
+	}
+	signTx_1[64] = signTx_1[64]
+	sigPublicKey, err := crypto.Ecrecover(hash, signTx_1)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(common.Bytes2Hex(sigPublicKey))
+	matches := bytes.Equal(sigPublicKey, publicKeyBytes)
+	pubKey, _ := crypto.UnmarshalPubkey(sigPublicKey)
+	fmt.Println(matches)
+	fmt.Println(crypto.PubkeyToAddress(*pubKey).String())
 }
 
 func TestHash1(t *testing.T) {

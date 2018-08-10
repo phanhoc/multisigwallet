@@ -20,7 +20,7 @@ contract MultisigWallet{
 
     // Note that address recovered from signatures must be strictly increasing, in order to prevent duplicates
     function execute(bytes signature1,bytes signature2, address destination, uint value, bytes data) public {
-        var operationHash = keccak256(destination, value, data, nonce);
+        var operationHash = keccak256(destination, value);
         // for (uint i = 0; i < signatures.length; i++) {
         //     var otherSigner = verifyMultiSig(destination, operationHash, signatures[i]);
         // }
@@ -68,11 +68,13 @@ contract MultisigWallet{
             s := mload(add(signature, 64))
             v := and(mload(add(signature, 65)), 255)
         }
-        if (v < 27) {
-            v += 27; // Ethereum versions are 27 or 28 as opposed to 0 or 1 which is submitted by some signing libs
-        }
+        //if (v < 27) {
+        //    v += 27; // Ethereum versions are 27 or 28 as opposed to 0 or 1 which is submitted by some signing libs
+        //}
         return ecrecover(operationHash, v, r, s);
     }
 
-    function() payable public {}
-}
+    function() payable public {
+
+        }
+    }

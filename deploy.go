@@ -1,17 +1,17 @@
 package main
 
 import (
-	"log"
-	"github.com/ethereum/go-ethereum/crypto"
-	"crypto/ecdsa"
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"math/big"
-	"fmt"
-	"github.com/ethereum/go-ethereum/ethclient"
-	"context"
 	mw "./contracts"
-	"github.com/ethereum/go-ethereum/common"
+	"context"
+	"crypto/ecdsa"
+	"fmt"
 	"github.com/davecgh/go-spew/spew"
+	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/ethclient"
+	"log"
+	"math/big"
 )
 
 func main() {
@@ -53,11 +53,11 @@ func main() {
 	auth.GasLimit = uint64(688254) // in units
 	auth.GasPrice = gasPrice
 
-	address, transaction, _, err := mw.DeployMultisigWallet(
+	address, transaction, _, err := mw.DeployMultisigWalletV2(
 		auth,
 		client,
 		owners,
-		big.NewInt(2), )
+		big.NewInt(2))
 	if err != nil {
 		log.Fatal(err)
 	}
